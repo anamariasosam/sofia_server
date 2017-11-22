@@ -1,30 +1,31 @@
 {
-  "name": "sofia_api",
+  "name": "sofia_server",
   "version": "0.0.1",
   "description": "An Instagram Directory",
   "main": "index.js",
+  "engines": {
+    "node": "8.6.0",
+    "npm": "5.4.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anamariasosam/sofia_api.git"
+    "url": "git+https://github.com/anamariasosam/sofia_server.git"
   },
-  "keywords": [
-    "instagram",
-    "directory",
-    "yellow",
-    "pages"
-  ],
+  "keywords": ["instagram", "directory", "yellow", "pages"],
   "author": "@anamariasosam",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anamariasosam/sofia_api/issues"
+    "url": "https://github.com/anamariasosam/sofia_server/issues"
   },
-  "homepage": "https://github.com/anamariasosam/sofia_api#readme",
+  "homepage": "https://github.com/anamariasosam/sofia_server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "mongodb": "^2.2.33"
   },

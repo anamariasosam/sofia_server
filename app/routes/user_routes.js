@@ -2,7 +2,7 @@ var ObjectID = require("mongodb").ObjectID;
 
 var USERS_COLLECTION = "users";
 
-module.exports = function(app, db) {
+module.exports = (app, db) => {
   // CONTACTS API ROUTES BELOW
 
   // Generic error handler used by all endpoints.

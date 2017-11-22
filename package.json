@@ -16,7 +16,12 @@
     "type": "git",
     "url": "git+https://github.com/anamariasosam/sofia_server.git"
   },
-  "keywords": ["instagram", "directory", "yellow", "pages"],
+  "keywords": [
+    "instagram",
+    "directory",
+    "yellow",
+    "pages"
+  ],
   "author": "@anamariasosam",
   "license": "ISC",
   "bugs": {
@@ -27,7 +32,9 @@
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

@@ -1,7 +1,7 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
-const db_config = require("./config/db");
+const keys = require("./config/keys");
 
 require("./services/passport");
 
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 var db;
 
 // Connect to the database before starting the application server.
-MongoClient.connect(db_config.url, function(err, database) {
+MongoClient.connect(keys.mongoURI, function(err, database) {
   if (err) {
     console.log(err);
     process.exit(1);

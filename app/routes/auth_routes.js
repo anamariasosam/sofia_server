@@ -5,8 +5,18 @@ module.exports = app => {
 
   app.get(
     "/auth/facebook/callback",
-    passport.authenticate("facebook", {
-      successRedirect: "/"
-    })
+    passport.authenticate("facebook"),
+    (req, res) => {
+      res.redirect("/");
+    }
   );
+
+  app.get("/api/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
+
+  app.get("/api/current_user", (req, res) => {
+    res.send(req);
+  });
 };

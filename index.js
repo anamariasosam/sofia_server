@@ -1,34 +1,28 @@
 const express = require("express");
-const MongoClient = require("mongodb").MongoClient;
+const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
-
+require("./models/User");
 require("./services/passport");
+
+mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
-
 app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Create a database variable outside of the database connection callback to reuse the connection pool in your app.
-var db;
+require("./app/routes")(app);
 
-// Connect to the database before starting the application server.
-MongoClient.connect(keys.mongoURI, function(err, database) {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  // Save database object from the callback for reuse.
-  db = database;
-  console.log("Database connection ready");
-
-  require("./app/routes")(app, database);
-
-  // Initialize the app.
-  var server = app.listen(PORT, function() {
-    console.log("App now running on port", PORT);
-  });
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);

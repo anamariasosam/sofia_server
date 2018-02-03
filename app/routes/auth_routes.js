@@ -7,7 +7,7 @@ module.exports = app => {
     "/auth/facebook/callback",
     passport.authenticate("facebook"),
     (req, res) => {
-      res.redirect("/");
+      res.redirect("/api/current_user");
     }
   );
 
